@@ -35,6 +35,7 @@ pipeline {
                 script {
                     dir('./terraform/accounts/dev/ecs'){
                     sh 'terraform init'
+                    sh 'terraform upgrade'
                     sh 'terraform plan -input=false -out tfplan'
                     sh 'terraform show -no-color tfplan > tfplan.txt'
                     def plan = readFile 'tfplan.txt'

@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Push into ECR') {
             steps {
-                sh'cd ./ecs-hello-world/src'
+                sh'cd src'
                 sh"aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2b6m8b9"
                 sh"docker build -t helloworldrepo ."
                 sh"docker tag helloworldrepo:latest public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
@@ -34,7 +34,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    sh"cd .\ecs-hello-world\terraform\accounts\dev\ecs"
+                    sh'cd terraform\accounts\dev\ecs'
                     sh 'terraform init'
                     sh "terraform plan -input=false -out tfplan"
                     sh 'terraform show -no-color tfplan > tfplan.txt'

@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Push into ECR') {
             steps {
-                dir('src'){
+                dir('/src'){
                 sh"aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2b6m8b9"
                 sh"docker build -t helloworldrepo ."
                 sh"docker tag helloworldrepo:latest public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
@@ -36,7 +36,7 @@ pipeline {
                 script {
                     dir('/terraform/accounts/dev/ecs'){
                     sh 'terraform init'
-                    sh "terraform plan -input=false -out tfplan"
+                    sh 'terraform plan -input=false -out tfplan'
                     sh 'terraform show -no-color tfplan > tfplan.txt'
                     def plan = readFile 'tfplan.txt'
                     def returnCode = sh(script: 'grep "Your infrastructure matches the configuration" tfplan.txt', returnStdout: true, returnStatus: true)

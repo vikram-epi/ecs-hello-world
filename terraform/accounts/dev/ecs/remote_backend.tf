@@ -1,8 +1,4 @@
-terraform {
-  backend "s3" {
-    bucket         = "my-ews-baket87801"
-    key            = "ECS-Fargate/terraform.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
-  }
-}
+bucket         = "my-ews-baket87801"
+key            = "ECS-Fargate/terraform.tfstate"
+region         = "us-east-1"
+encrypt        = true

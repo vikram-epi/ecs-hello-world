@@ -4,6 +4,6 @@ output "web_endpoint" {
 }
 
 output "ecr_repo_url" {
-  value = aws_ecr_repository.hello_world.repository_url
+  value = "public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
   description = "url where the docker image is to be pushed"
 }

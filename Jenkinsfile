@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     dir('./terraform/accounts/dev/ecs'){
-                    sh 'terraform init -backend-config=backend'
+                    sh 'init -migrate-state -backend-config=backend'
                     sh 'terraform plan -input=false -out tfplan'
                     sh 'terraform show -no-color tfplan > tfplan.txt'
                     def plan = readFile 'tfplan.txt'

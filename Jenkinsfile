@@ -26,8 +26,8 @@ pipeline {
             steps {
                 sh"aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2b6m8b9"
                 sh"docker build -t hello_world ."
-                sh"docker tag hello_world:latest public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
-                sh"docker push public.ecr.aws/g2b6m8b9/hello_world:latest"
+                sh"docker tag helloworldrepo:latest public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
+                sh"docker push public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
             }
         }
         stage('Terraform Init') {

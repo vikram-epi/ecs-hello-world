@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     dir('terraform/accounts/dev/ecs/'){
-                    sh 'terraform init'
+                    sh 'terraform init -backend-config=backend'
                     sh 'echo "init done"'
                     sh 'terraform plan -input=false -out tfplan'
                     sh 'terraform show -no-color tfplan > tfplan.txt'

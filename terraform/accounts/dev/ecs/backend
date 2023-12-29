@@ -1,3 +1,3 @@
-bucket         = "mycomponents-tfstate1"
+bucket         = "hello-world-terraform-state-morrisons-demo"
 key            = "ECS-Fargate/terraform.tfstate"
 region         = "us-east-1"

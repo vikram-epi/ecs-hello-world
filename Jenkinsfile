@@ -33,8 +33,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    dir('/terraform/accounts/dev/remote_state/'){
-                    sh 'sudo su - jenkins'
+                    dir('terraform/accounts/dev/remote_state/'){
                     sh 'sudo terraform init'
                     sh 'sudo terraform plan -input=false -out tfplan'
                     sh 'sudo terraform show -no-color tfplan > tfplan.txt'

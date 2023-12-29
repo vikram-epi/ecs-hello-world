@@ -3,7 +3,7 @@ provider "aws" {
   profile = "default"
   default_tags {
     tags = {
-      Organisation = "asmigar"
+      Organisation = "self"
       Environment  = "dev"
     }
   }

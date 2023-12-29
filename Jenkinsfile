@@ -33,8 +33,8 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    dir('./terraform/accounts/dev/ecs'){
-                    sh 'terraform init -backend-config=remote_backend.tf'
+                    dir('./terraform/accounts/dev/remote_state/'){
+                    sh 'terraform init -reconfigure -backend-config=backend'
                     sh 'terraform plan -input=false -out tfplan'
                     sh 'terraform show -no-color tfplan > tfplan.txt'
                     def plan = readFile 'tfplan.txt'

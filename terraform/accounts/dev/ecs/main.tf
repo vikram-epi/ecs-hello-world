@@ -6,8 +6,8 @@ module "vpc" {
   vpc_cidr_block = var.vpc_cidr_block
 }
 
-resource "aws_ecr_repository" "hello_world" {
-  name                 = "hello-world"
+resource "aws_ecr_repository" "helloworldrepo" {
+  name                 = "public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
@@ -118,7 +118,7 @@ resource "aws_ecs_task_definition" "hello" {
   container_definitions = jsonencode([
     {
       name      = "hello-world"
-      image     = "aws_ecr_repository.hello_world.public.ecr.aws/g2b6m8b9/hello_world:latest"
+      image     = "public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
       essential = true
 
       portMappings = [

@@ -33,7 +33,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    dir('terraform/accounts/dev/remote_state/'){
+                    dir('terraform/accounts/dev/ecs/'){
                     sh 'terraform init'
                     sh 'echo "init done"'
                     sh 'terraform plan -input=false -out tfplan'

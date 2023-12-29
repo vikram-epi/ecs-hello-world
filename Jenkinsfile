@@ -34,9 +34,9 @@ pipeline {
             steps {
                 script {
                     dir('terraform/accounts/dev/remote_state/'){
-                    sh 'sudo terraform init'
-                    sh 'sudo terraform plan -input=false -out tfplan'
-                    sh 'sudo terraform show -no-color tfplan > tfplan.txt'
+                    sh 'terraform init'
+                    sh 'terraform plan -input=false -out tfplan'
+                    sh 'terraform show -no-color tfplan > tfplan.txt'
                     def plan = readFile 'tfplan.txt'
                     def returnCode = sh(script: 'grep "Your infrastructure matches the configuration" tfplan.txt', returnStdout: true, returnStatus: true)
                     if (returnCode == 1) {

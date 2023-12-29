@@ -24,10 +24,10 @@ pipeline {
         }
         stage('Push into ECR') {
             steps {
-                sh"aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2b6m8b9"
-                sh"docker build -t hello_world ."
-                sh"docker tag helloworldrepo:latest public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
-                sh"docker push public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
+                sh'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2b6m8b9'
+                sh'docker build -t hello_world .'
+                sh'docker tag helloworldrepo:latest public.ecr.aws/g2b6m8b9/helloworldrepo:latest'
+                sh'docker push public.ecr.aws/g2b6m8b9/helloworldrepo:latest'
             }
         }
         stage('Terraform Init') {
@@ -44,7 +44,7 @@ pipeline {
                     input message: "Do you want to apply the plan?",
                           parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                                     }
-                                    sh "terraform apply --auto-approve"
+                                    sh 'terraform apply --auto-approve'
                                 }                                                                                  
                 }}
             }

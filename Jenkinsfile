@@ -35,6 +35,7 @@ pipeline {
                 script {
                     dir('terraform/accounts/dev/remote_state/'){
                     sh 'terraform init'
+                    sh 'echo "init done"'
                                                                                                       
                 }}
             }

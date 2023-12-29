@@ -117,8 +117,8 @@ resource "aws_ecs_task_definition" "hello" {
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   container_definitions = jsonencode([
     {
-      name      = "hello-world"
-      image     = "public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
+      name      = "helloworldrepo"
+      image     = "helloworldrepo:latest"
       essential = true
 
       portMappings = [

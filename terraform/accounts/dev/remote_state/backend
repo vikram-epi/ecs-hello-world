@@ -1,0 +1,3 @@
+bucket         = "my-ews-baket8780"
+key            = "Modularized/ECS-Fargate/terraform.tfstate"
+region         = "us-east-1"

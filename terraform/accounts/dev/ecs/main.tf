@@ -7,7 +7,7 @@ module "vpc" {
 }
 
 resource "aws_ecr_repository" "helloworldrepo" {
-  name                 = "public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
+  name                 = "helloworldrepo"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {

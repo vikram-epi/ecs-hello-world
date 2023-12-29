@@ -33,8 +33,8 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    dir('/terraform/accounts/dev/remote_state/'){
                     sh 'terraform init'
+                    dir('/terraform/accounts/dev/remote_state/'){
                     sh 'terraform plan -input=false -out tfplan'
                     sh 'terraform show -no-color tfplan > tfplan.txt'
                     def plan = readFile 'tfplan.txt'

@@ -1,7 +1,7 @@
 
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "asmigar-hello-world-terraform-state"
+  bucket = "hello-world-terraform-state"
 
   # Prevent accidental deletion of this S3 bucket
   lifecycle {

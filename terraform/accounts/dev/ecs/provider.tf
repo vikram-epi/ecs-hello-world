@@ -11,7 +11,7 @@ terraform {
     key              	   = "state/terraform.tfstate"
     region         	   = "us-east-1"
     encrypt        	   = true
-    dynamodb_table = "mycomponents_tf_lockid"
+    dynamodb_table = "hello-world-state-locks-ms-demo"
   }
 }
 # Configure the AWS Provider

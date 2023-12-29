@@ -37,17 +37,7 @@ pipeline {
                     sh 'terraform init'
                     sh 'echo "init done"'
                     sh 'terraform plan -input=false -out tfplan'
-                    sh 'terraform show -no-color tfplan > tfplan.txt'
-                    def plan = readFile 'tfplan.txt'
-                    def returnCode = sh(script: 'grep "Your infrastructure matches the configuration" tfplan.txt', returnStdout: true, returnStatus: true)
-                    if (returnCode == 1) {
-                    timeout(time: 10, unit: 'MINUTES') {
-                    input message: "Do you want to apply the plan?",
-                          parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
-                                    }
-                                    sh 'terraform apply --auto-approve'
-                                }
-                                                                                                      
+                    sh 'terraform apply --auto-approve'                                                                                   
                 }}
             }
         }

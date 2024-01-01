@@ -112,13 +112,13 @@ resource "aws_ecs_cluster" "cluster" {
 }
 
 resource "aws_ecs_task_definition" "hello" {
-  count = ${var.release_version} != "" ? 1 : 0
-  family = "helloworldrepo"
+  count = var.release_version != "" ? 1 : 0
+  family = "hello-world"
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   container_definitions = jsonencode([
     {
-      name      = "helloworld"
-      image     = "${aws_ecr_repository.helloworldrepo.repository_url}:latest"
+      name      = "hello-world"
+      image     = "public.ecr.aws/g2b6m8b9/helloworldrepo:latest:latest"
       essential = true
 
       portMappings = [
@@ -139,7 +139,7 @@ resource "aws_ecs_task_definition" "hello" {
 }
 
 resource "aws_ecs_service" "hello" {
-  count = ${var.release_version} != "" ? 1 : 0
+  count = var.release_version != "" ? 1 : 0
   name            = "hello-world"
   cluster         = aws_ecs_cluster.cluster.id
   task_definition = aws_ecs_task_definition.hello[0].arn

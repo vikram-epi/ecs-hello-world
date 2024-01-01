@@ -112,7 +112,7 @@ resource "aws_ecs_cluster" "cluster" {
 }
 
 resource "aws_ecs_task_definition" "hello" {
-  count = var.release_version != "" ? 1 : 0
+  count = ${var.release_version} != "" ? 1 : 0
   family = "helloworldrepo"
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   container_definitions = jsonencode([
@@ -139,7 +139,7 @@ resource "aws_ecs_task_definition" "hello" {
 }
 
 resource "aws_ecs_service" "hello" {
-  count = var.release_version != "" ? 1 : 0
+  count = ${var.release_version} != "" ? 1 : 0
   name            = "hello-world"
   cluster         = aws_ecs_cluster.cluster.id
   task_definition = aws_ecs_task_definition.hello[0].arn

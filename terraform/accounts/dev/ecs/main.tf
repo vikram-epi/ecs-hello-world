@@ -113,7 +113,7 @@ resource "aws_ecs_cluster" "cluster" {
 
 resource "aws_ecs_task_definition" "hello" {
   count = var.release_version != "" ? 1 : 0
-  family = "hello-world"
+  family = "helloworldrepo"
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   container_definitions = jsonencode([
     {

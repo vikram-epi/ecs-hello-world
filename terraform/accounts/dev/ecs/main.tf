@@ -118,7 +118,7 @@ resource "aws_ecs_task_definition" "hello" {
   container_definitions = jsonencode([
     {
       name      = "helloworld"
-      image     = "helloworldrepo:latest"
+      image     = "public.ecr.aws/g2b6m8b9/helloworldrepo:latest"
       essential = true
 
       portMappings = [

@@ -31,8 +31,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state-m
 }
 
 # Enable versioning so we can see the full revision history of our state files
-resource "aws_s3_bucket_versioning" "terraform_state-ms-demo" {
-  bucket = aws_s3_bucket.terraform_state-ms-demo.id
+resource "aws_s3_bucket_versioning" "terraform_state-ms-demo1" {
+  bucket = aws_s3_bucket.terraform_state-ms-demo1.id
 
   versioning_configuration {
     status = "Enabled"

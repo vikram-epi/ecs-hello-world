@@ -11,8 +11,8 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
-resource "aws_s3_bucket" "terraform_state-ms-demo" {
-  bucket = "hello-world-terraform-state-morrisons-demo"
+resource "aws_s3_bucket" "terraform_state-ms-demo1" {
+  bucket = "hello-world-terraform-state-morrisons-demo1"
 
   # Prevent accidental deletion of this S3 bucket
   lifecycle {
@@ -20,8 +20,8 @@ resource "aws_s3_bucket" "terraform_state-ms-demo" {
   }
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state-ms-demo" {
-  bucket = aws_s3_bucket.terraform_state-ms-demo.id
+resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state-ms-demo1" {
+  bucket = aws_s3_bucket.terraform_state-ms-demo1.id
 
   rule {
     apply_server_side_encryption_by_default {
@@ -41,8 +41,8 @@ resource "aws_s3_bucket_versioning" "terraform_state-ms-demo" {
 
 
 
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "hello-world-state-locks-ms-demo"
+resource "aws_dynamodb_table" "terraform_locks1" {
+  name         = "hello-world-state-locks-ms-demo1"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 

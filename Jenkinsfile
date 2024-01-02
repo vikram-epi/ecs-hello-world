@@ -34,10 +34,9 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    dir('terraform/accounts/dev/ecs/'){
+                    dir('terraform/accounts/dev/remote_state/'){
                     sh 'terraform init -backend-config=backend'
-                    sh 'echo "init done"'
-                    sh 'terraform destroy --auto-approve'                                                                                   
+                    sh 'echo "init done"'                                                                                   
                 }}
             }
         }

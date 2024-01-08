@@ -11,7 +11,8 @@ pipeline {
             steps {
                 script {
                     dir('terraform/accounts/dev/remote_state/'){
-                    sh "terraform destroy --auto-approve"
+                    sh 'terraform init'
+                    sh 'terraform destroy --auto-approve'
                     sh 'echo "destroyed"'                                                                                   
                 }}
             }

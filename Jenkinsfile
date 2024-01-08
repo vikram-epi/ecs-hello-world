@@ -10,27 +10,6 @@ pipeline {
                 sh 'echo Preparing'
             }
         }
-        stage('Git Pulling') {
-            steps {
-                cleanWs();
-                git branch: 'main', url: 'https://github.com/vikram-epi/ecs-hello-world.git'
-            }
-        }
-        stage('Build docker image') {
-            steps {
-                script {
-                    docker.build registry
-                }
-            }
-        }
-        stage('Push into ECR') {
-            steps {
-                sh'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g2b6m8b9'
-                sh'docker build -t hello_world .'
-                sh'docker tag helloworldrepo:latest public.ecr.aws/g2b6m8b9/helloworldrepo:latest'
-                sh'docker push public.ecr.aws/g2b6m8b9/helloworldrepo:latest'
-            }
-        }
         stage('Terraform Init') {
             steps {
                 script {

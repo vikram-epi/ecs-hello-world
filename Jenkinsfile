@@ -1,9 +1,6 @@
 properties([parameters([choice(choices: ['Terraform-ECS-Fargate'], name: 'Terraform-ECS-Fargate'), choice(choices: ['plan', 'apply', 'destroy'], name: 'Terraform_Action')])])
 pipeline {
-    agent any
-    environment {
-        registry = "public.ecr.aws/g2b6m8b9/helloworldrepo"
-    }    
+    agent any    
     stages {
         stage('Preparing') {
             steps {

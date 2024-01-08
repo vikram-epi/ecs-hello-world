@@ -36,8 +36,8 @@ pipeline {
                 script {
                     dir('terraform/accounts/dev/remote_state/'){
                     sh 'terraform init -backend-config=backend'
-                    sh "terraform apply --auto-approve"
-                    sh 'echo "init done"'                                                                                   
+                    sh "terraform destroy --auto-approve"
+                    sh 'echo "destroyed"'                                                                                   
                 }}
             }
         }
